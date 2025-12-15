@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matthew Madruga | Philosophy</title>
+  <meta name="description" content="Academic website for Matthew Madruga (PhD candidate in Philosophy). Research in philosophy of law, legal epistemology, and ethics." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#101a35;
+      --text:#e9eefc;
+      --muted:#b9c3e6;
+      --accent:#7aa2ff;
+      --accent2:#62e6b6;
+      --border:rgba(233,238,252,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(122,162,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 95% 10%, rgba(98,230,182,.18), transparent 60%),
+        linear-gradient(180deg, #070a15, var(--bg));
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(160%) blur(10px);
+      background:rgba(7,10,21,.65);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px;
+      padding:14px 24px;
+      max-width:var(--max);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex; flex-direction:column;
+      gap:2px;
+    }
+    .brand strong{font-size:14px; letter-spacing:.2px}
+    .brand span{font-size:12px; color:var(--muted)}
+    nav{
+      display:flex; gap:14px; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      font-size:13px;
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    nav a:hover{color:var(--text); border-color:var(--border); text-decoration:none}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr}
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(16,26,53,.96), rgba(16,26,53,.75));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:10px;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:50%;
+      background:linear-gradient(180deg, var(--accent), var(--accent2));
+      box-shadow:0 0 0 4px rgba(122,162,255,.12);
+    }
+    h1{margin:0; font-size:34px; letter-spacing:-.3px; line-height:1.12}
+    .subtitle{margin:10px 0 0; color:var(--muted)}
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .pill{
+      font-size:12px;
+      color:var(--text);
+      border:1px solid var(--border);
+      background:rgba(233,238,252,.04);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:600;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(233,238,252,.06);
+      color:var(--text);
+      text-decoration:none;
+    }
+    .btn.primary{
+      background:linear-gradient(180deg, rgba(122,162,255,.26), rgba(98,230,182,.18));
+      border-color:rgba(122,162,255,.35);
+    }
+    .btn:hover{text-decoration:none; transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+
+    /* Sections */
+    section{margin-top:18px}
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:.2px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
+    }
+
+    .list{margin:0; padding-left:18px; color:var(--muted)}
+    .list li{margin:8px 0}
+
+    .item{
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(233,238,252,.04);
+    }
+    .item strong{display:block; font-size:14px; color:var(--text)}
+    .item span{display:block; font-size:13px; color:var(--muted); margin-top:2px}
+    .meta{font-size:12px; color:var(--muted); margin-top:8px}
+
+    /* Footer */
+    footer{
+      margin:28px 0 10px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Print */
+    @media print{
+      header{position:static; background:#fff; color:#000}
+      body{background:#fff; color:#000}
+      .card,.item{box-shadow:none}
+      a{color:#000}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <strong>Matthew Madruga</strong>
+        <span>Philosophy | Law, Evidence, and Ethics</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#service">Service</a>
+        <a href="#publications">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="card">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span><span>PhD Candidate, Philosophy (UC Irvine)</span></div>
+        <h1>Legal epistemology, philosophy of law, and ethics—
+          with a focus on evidence, standards of proof, and sentencing.</h1>
+        <p class="subtitle">
+          I study how criminal legal institutions manage knowledge and risk, especially in trials and sentencing. My work connects
+          speech act theory, modal epistemology, and moral philosophy to questions about guilt standards (e.g., beyond a reasonable doubt),
+          evidentiary reliability, and the ethics of state punishment.
+        </p>
+        <div class="pillrow" role="list">
+          <span class="pill" role="listitem">Philosophy of Law</span>
+          <span class="pill" role="listitem">Legal Epistemology</span>
+          <span class="pill" role="listitem">Speech Acts</span>
+          <span class="pill" role="listitem">Modal Epistemology</span>
+          <span class="pill" role="listitem">Ethics & Punishment</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="#publications">Read writing</a>
+          <a class="btn" href="#teaching">Courses</a>
+          <a class="btn" href="CV.pdf" download>Download CV (PDF)</a>
+        </div>
+      </div>
+
+      <div class="card" id="about">
+        <h2>About</h2>
+        <p style="color:var(--muted); margin:0">
+          I teach critical thinking, logic (including symbolic logic), ethics, and philosophy of technology/AI.
+          I value scaffolded skill-building, transparent assessment, and dialogical pedagogy.
+          I use zero-cost course materials whenever possible.
+        </p>
+        <div style="height:12px"></div>
+        <div class="item">
+          <strong>Current</strong>
+          <span>UC Irvine — Graduate instructor; program leadership and mentoring</span>
+          <div class="meta">Areas: sentencing as a speech act; epistemic thresholds; evidence and error costs</div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="item">
+          <strong>Teaching strengths</strong>
+          <span>Logic • Critical Thinking • Ethics • AI, Ethics & Robots • Moral and Political Philosophy</span>
+          <div class="meta">Formats: in-person • hybrid • online</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="research" class="grid">
+      <div class="card col-8">
+        <h2>Research</h2>
+        <p style="color:var(--muted); margin-top:0">
+          My dissertation work examines sentencing as an authoritative speech act with epistemic and ethical stakes.
+          I argue that sentencing implicitly purports to satisfy a justification threshold analogous to (but distinct from) the trial standard,
+          and that epistemic failures in sentencing constitute moral harms.
+        </p>
+        <div class="grid" style="margin-top:10px">
+          <div class="item col-6">
+            <strong>Dissertation (in progress)</strong>
+            <span>Speech acts, epistemic standards, and the morality of punishment</span>
+          </div>
+          <div class="item col-6">
+            <strong>Working themes</strong>
+            <span>Risk assessment; biased evidence; safety/sensitivity; authority and justification</span>
+          </div>
+          <div class="item col-12">
+            <strong>Selected questions</strong>
+            <span>What epistemic standard should govern sentencing fact-finding? When do legal pronouncements misfire epistemically? How should error costs shape institutional design?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4">
+        <h2>Research Interests</h2>
+        <ul class="list">
+          <li>Standards of proof and epistemic risk</li>
+          <li>Evidence, testimony, and credibility</li>
+          <li>Speech act theory in legal contexts</li>
+          <li>Ethics of punishment and sentencing</li>
+          <li>AI, algorithms, and institutional decision-making</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="teaching" class="grid">
+      <div class="card col-6">
+        <h2>Teaching</h2>
+        <p style="color:var(--muted); margin-top:0">
+          My courses emphasize transferable skills: argument reconstruction, validity and soundness, probability and evidence,
+          ethical analysis, and clear academic writing.
+        </p>
+        <div class="grid" style="margin-top:10px">
+          <div class="item col-12">
+            <strong>Logic (incl. symbolic logic)</strong>
+            <span>Truth tables • natural deduction • quantifiers • informal logic and argument mapping</span>
+          </div>
+          <div class="item col-12">
+            <strong>Introduction to Critical Thinking</strong>
+            <span>Fallacies • cognitive biases • media literacy • reasoning in post-truth environments</span>
+          </div>
+          <div class="item col-12">
+            <strong>Ethics / Contemporary Moral Problems</strong>
+            <span>Deontology • consequentialism • virtue ethics • applied cases (punishment, technology, policy)</span>
+          </div>
+          <div class="item col-12">
+            <strong>AI, Ethics, and Robots / Philosophy of Technology</strong>
+            <span>Algorithmic bias • autonomy • responsibility • surveillance • governance and risk</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-6">
+        <h2>Teaching Approach</h2>
+        <ul class="list">
+          <li><strong>Scaffolding:</strong> incremental skill-building with frequent low-stakes practice.</li>
+          <li><strong>Dialogical learning:</strong> structured discussion and cooperative inquiry, not adversarial debate.</li>
+          <li><strong>Writing integration:</strong> workshops for thesis construction, revision, and argument clarity.</li>
+          <li><strong>Equity-minded design:</strong> zero-cost materials; transparent rubrics; multiple pathways to participation.</li>
+          <li><strong>Assessment:</strong> clear outcomes, calibrated grading, and timely formative feedback.</li>
+        </ul>
+        <div style="height:10px"></div>
+        <div class="item">
+          <strong>Sample materials</strong>
+          <span>Add links here: syllabi, assignments, slides, Canvas modules</span>
+          <div class="meta">Tip: upload PDFs in the same folder and link them from this section.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="service" class="grid">
+      <div class="card col-12">
+        <h2>Service & Leadership</h2>
+        <div class="grid" style="margin-top:10px">
+          <div class="item col-4">
+            <strong>Graduate program leadership</strong>
+            <span>Graduate coordinator roles; mentoring; instructional support</span>
+          </div>
+          <div class="item col-4">
+            <strong>Ethics Bowl coaching</strong>
+            <span>Team development; case analysis; public reasoning and dialogue</span>
+          </div>
+          <div class="item col-4">
+            <strong>Access and pipeline programs</strong>
+            <span>College access; constitutional literacy; justice-impacted student support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="grid">
+      <div class="card col-12">
+        <h2>Writing</h2>
+        <p style="color:var(--muted); margin-top:0">
+          Add publications, works in progress, talks, and links to drafts.
+          You can format entries like the examples below.
+        </p>
+        <div class="grid" style="margin-top:10px">
+          <div class="item col-12">
+            <strong>Working Paper: Epistemic Thresholds in Sentencing</strong>
+            <span>Draft available upon request.</span>
+            <div class="meta">Keywords: sentencing, epistemic risk, reasonable doubt, speech acts</div>
+          </div>
+          <div class="item col-12">
+            <strong>Talk: Sentencing as a Legal Speech Act</strong>
+            <span>Department/Conference talk — add date, venue, and slides.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="grid">
+      <div class="card col-8">
+        <h2>Contact</h2>
+        <p style="color:var(--muted); margin-top:0">
+          The fastest way to reach me is by email. You can also link to Google Scholar, PhilPeople, ORCID, and SSRN below.
+        </p>
+        <div class="grid" style="margin-top:10px">
+          <div class="item col-6">
+            <strong>Email</strong>
+            <span><a href="mailto:madrugam@uci.edu">madrugam@uci.edu</a></span>
+          </div>
+          <div class="item col-6">
+            <strong>Location</strong>
+            <span>Southern California</span>
+          </div>
+          <div class="item col-6">
+            <strong>Links</strong>
+            <span>
+              <a href="#">Google Scholar</a> ·
+              <a href="#">PhilPeople</a> ·
+              <a href="#">ORCID</a> ·
+              <a href="#">SSRN</a>
+            </span>
+          </div>
+          <div class="item col-6">
+            <strong>Office hours</strong>
+            <span>By appointment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4">
+        <h2>Quick Downloads</h2>
+        <ul class="list">
+          <li><a href="CV.pdf" download>Curriculum Vitae (PDF)</a></li>
+          <li><a href="Teaching-Statement.pdf" download>Teaching Statement (PDF)</a></li>
+          <li><a href="DEI-Statement.pdf" download>Diversity Statement (PDF)</a></li>
+          <li><a href="Writing-Sample.pdf" download>Writing Sample (PDF)</a></li>
+        </ul>
+        <div class="meta">Replace filenames after you upload your PDFs.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Matthew Madruga. Built as a lightweight, accessible single-page site.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
