@@ -3,254 +3,305 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <div style="display:flex; gap:24px; align-items:center; flex-wrap:wrap;">
-  <img
-    src="assets/images/headshot.jpg"
-    alt="Matthew Madruga"
-    style="width:160px; height:160px; object-fit:cover; border-radius:50%; border:1px solid #e5e7eb;"
-  />
-  <div>
-    <h1>Matthew Madruga</h1>
-    <p class="subtitle">Philosopher | Ethics, Law, AI, and Education</p>
-  </div>
-</div>
+  <title>Matthew Madruga | Philosophy</title>
+  <meta name="description" content="Matthew Madruga — ethics, philosophy of law, AI ethics, philosophy of education, and Chinese philosophy." />
 
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #111827;
-      --muted: #4b5563;
-      --line: #e5e7eb;
-      --link: #111827;
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --link:#111827;
       --max: 920px;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+
+    html { scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
-    header {
+
+    a{ color:var(--link); text-decoration:none; border-bottom:1px solid var(--line); }
+    a:hover{ border-bottom-color:var(--link); }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 28px 18px; }
+
+    /* Top nav */
+    header{
+      position:sticky; top:0; z-index:10;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
-      background: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 18px 18px; }
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .nav .brand{
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:0.2px;
+      color: var(--text);
+      border-bottom: none;
+    }
+    .navlinks{
+      display:flex;
+      flex-wrap:wrap;
       gap: 14px;
-      align-items: center;
-      justify-content: space-between;
+      font-size:14px;
     }
-    .nav a {
-      color: var(--link);
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .nav a:hover { text-decoration: underline; }
-    .nav-left { display: flex; gap: 16px; flex-wrap: wrap; }
-    .brand {
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
+    .navlinks a{ border-bottom:none; color:var(--muted); }
+    .navlinks a:hover{ color:var(--text); text-decoration:underline; }
 
-    main { padding: 48px 0 70px; }
-    .hero h1 {
-      margin: 0 0 8px;
+    /* Hero */
+    .hero{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 26px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .hero-left{ flex: 1; min-width: 260px; }
+    .name{
+      margin:0 0 6px 0;
       font-size: 38px;
-      line-height: 1.2;
-      letter-spacing: -0.3px;
+      line-height:1.15;
+      letter-spacing:-0.3px;
     }
-    .subtitle {
-      margin: 0 0 26px;
-      color: var(--muted);
-      font-size: 16px;
+    .subtitle{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .hero-right{
+      width: 160px;
+      flex: 0 0 160px;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .headshot{
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 14px; /* more like the reference sites than a circle */
+      border: 1px solid var(--line);
+    }
+    @media (max-width: 760px){
+      .hero{ flex-direction:column-reverse; align-items:flex-start; }
+      .hero-right{ justify-content:flex-start; }
     }
 
-    section { padding: 28px 0; border-top: 1px solid var(--line); }
-    section:first-of-type { border-top: none; padding-top: 0; }
-    h2 {
-      margin: 0 0 10px;
+    /* Sections */
+    section{ padding: 26px 0; border-top:1px solid var(--line); }
+    section:first-of-type{ border-top:none; padding-top: 0; }
+    h2{
+      margin: 0 0 10px 0;
       font-size: 18px;
       letter-spacing: -0.2px;
     }
-    p { margin: 0 0 12px; }
-    .muted { color: var(--muted); }
+    p{ margin: 0 0 12px 0; }
+    .muted{ color: var(--muted); }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
+    /* Two-column blocks */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 10px;
     }
-    @media (min-width: 760px) {
-      .grid { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 760px){
+      .grid{ grid-template-columns: 1fr; }
     }
-    .card {
+    .card{
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 16px 16px;
-      background: #fff;
+      padding: 16px;
+      background:#fff;
     }
-    .card h3 { margin: 0 0 8px; font-size: 15px; }
-    ul { margin: 10px 0 0 18px; padding: 0; }
-    li { margin: 6px 0; }
-    a.file {
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      color: var(--link);
+    .card h3{
+      margin:0 0 8px 0;
+      font-size: 15px;
     }
-    a.file:hover { border-bottom-color: var(--link); }
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 24px 0;
+    ul{ margin: 10px 0 0 18px; padding:0; }
+    li{ margin: 6px 0; }
+
+    footer{
+      border-top:1px solid var(--line);
+      margin-top: 28px;
+      padding-top: 18px;
       color: var(--muted);
       font-size: 13px;
     }
+
+    .btnrow{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .pill{
+      display:inline-block;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background:#fff;
+      font-size:14px;
+      text-decoration:none;
+    }
+    .pill:hover{ border-color: var(--text); }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">Matthew Madruga</div>
-      <nav class="nav-left" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#cv">CV</a>
-        <a href="#links">Links</a>
-      </nav>
+
+<header>
+  <div class="nav">
+    <span class="brand">Matthew Madruga</span>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#cv">CV</a>
+      <a href="#links">Links</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="hero-left">
+      <h1 class="name">Matthew Madruga</h1>
+      <p class="subtitle">Generalist philosopher working in ethics, law, education, AI, and Chinese philosophy.</p>
+
+      <div class="btnrow">
+        <a class="pill" href="#cv">CV (PDF)</a>
+        <a class="pill" href="#teaching">Syllabi</a>
+        <a class="pill" href="#links">Contact & Links</a>
+      </div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <div class="hero">
-      <h1>Matthew Madruga</h1>
-      <p class="subtitle">Philosopher | Ethics, Law, AI, and Education</p>
+    <!-- OPTIONAL: upload assets/images/headshot.jpg -->
+    <div class="hero-right">
+      <img class="headshot" src="assets/images/headshot.jpg" alt="Matthew Madruga" />
     </div>
+  </div>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I am a philosopher who is interested in ethics, philosophy of law, philosophy of education, philosophy of artificial intelligence, and Chinese philosophy. I approach philosophy as a broadly dialogical practice; one that treats argument, interpretation, and inquiry as shared intellectual activities rather than adversarial exercises. Across both research and teaching, I am interested in how normative reasoning operates within institutions, and in how moral responsibility is shaped by epistemic risk, uncertainty, and power.
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a philosopher whose work spans ethics, philosophy of law, philosophy of education, philosophy of artificial intelligence,
+      and Chinese philosophy. I approach philosophy as a broadly <strong>dialogical practice</strong>—one that treats argument,
+      interpretation, and inquiry as shared intellectual activities rather than purely adversarial exercises.
+    </p>
+    <p>
+      Across research and teaching, I am interested in how normative reasoning operates within institutions, and in how moral responsibility
+      is shaped by epistemic risk, uncertainty, and power.
+    </p>
+  </section>
 
-My research in philosophy of law focuses on punishment, moral responsibility, and the ethical significance of uncertainty in legal and institutional decision-making. I am particularly interested in questions about when the imposition of risk is morally permissible, how evidentiary standards shape responsibility, and how punishment can be justified under conditions of imperfect knowledge. These concerns also inform my work in applied ethics and political philosophy, especially where legal norms intersect with emerging technologies.
+  <section id="research">
+    <h2>Research</h2>
+    <p>
+      My work in philosophy of law focuses on punishment, moral responsibility, and the ethics of epistemic risk in legal and institutional
+      decision-making. I am especially interested in questions about when the imposition of risk is morally permissible, how evidentiary
+      standards shape responsibility, and how punishment can be justified under conditions of imperfect knowledge.
+    </p>
+    <p>
+      I also work in philosophy of artificial intelligence and applied ethics, where I examine responsibility, authority, bias, and justification
+      in algorithmic decision-making—particularly in domains such as criminal justice, education, and public governance.
+    </p>
 
-I also work in the philosophy of artificial intelligence, where I examine issues of responsibility, authority, bias, and justification in algorithmic and automated decision-making systems used in domains such as criminal justice, education, and public governance. Rather than treating AI ethics as a purely technical problem, I approach it as a normative and institutional question about how reasons, decisions, and accountability are distributed.
-
-My work in philosophy of education and Chinese philosophy informs both my research and pedagogy. Engagement with early Confucian and Daoist thought has shaped my understanding of moral cultivation, relational agency, and the role of dialogue in ethical life, while my work in philosophy of education emphasizes teaching as a practice aimed at cultivating intellectual agency: the ability to reason carefully, articulate commitments clearly, and revise one’s views in light of argument and evidence.
-
-Across these areas, my work is unified by a central question: how should we reason, and teach others to reason, under conditions of disagreement, uncertainty, and institutional constraint?
-      </p>
-      <p class="muted">
-        
-      </p>
-    </section>
-
-    <section id="research">
-      <h2>Research</h2>
-      <p>
-        My research centers on punishment, moral responsibility, and the ethics of epistemic risk, especially in legal and institutional
-        decision-making. I work primarily in philosophy of law, applied ethics, philosophy of education, and political philosophy, with additional research on
-        artificial intelligence and algorithmic governance. I am particularly interested in how uncertainty, evidence, and risk assessment shape the moral justification of punishment and
-        sentencing, as well as how emerging technologies complicate traditional accounts of responsibility and authority.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Areas</h3>
-          <ul>
-            <li>Philosophy of Law (punishment, responsibility, institutional decision-making)</li>
-            <li>Ethics and Applied Ethics (epistemic risk, justification under uncertainty)</li>
-            <li>Philosophy of AI (bias, authority, accountability in automated systems)</li>
-            <li>Philosophy of Education (dialogue, intellectual agency, pedagogy)</li>
-            <li>Chinese Philosophy (early Confucian and Daoist thought)</li>
-          </ul>
-        </div>
-        <div class="card">
-          </p>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Areas</h3>
+        <ul>
+          <li>Philosophy of Law (punishment, responsibility, institutional decision-making)</li>
+          <li>Ethics & Applied Ethics (epistemic risk, justification under uncertainty)</li>
+          <li>Philosophy of AI (bias, authority, accountability)</li>
+          <li>Philosophy of Education (dialogue, intellectual agency)</li>
+          <li>Chinese Philosophy (early Confucian and Daoist thought)</li>
+        </ul>
       </div>
-    </section>
-
-    <section id="teaching">
-      <h2>Teaching</h2>
-      <p>
-        My approach to teaching philosophy is grounded in the conviction that philosophical education is not primarily the transmission of doctrines, but the cultivation of intellectual agency. To study philosophy is to learn how to reason carefully under conditions of uncertainty, disagreement, and incomplete information—conditions that characterize not only academic inquiry, but civic life, professional decision-making, and everyday moral judgment. My teaching therefore emphasizes philosophy as a dialogical practice: one that develops students’ ability to articulate reasons, assess evidence, engage disagreement respectfully, and revise their views in light of argument.
-
-This pedagogical orientation shapes both the content and structure of my courses. Across classes in critical thinking, logic, ethics, philosophy of law, philosophy of technology, and contemporary moral problems, I organize material around central questions rather than isolated theories. Students are invited to ask not only what a philosopher argues, but why those arguments matter, how they function, and where they succeed or fail when applied to real institutional contexts such as law, education, or emerging technologies. This approach helps students see philosophy as a living practice with stakes, rather than as a collection of historical positions to be memorized.
-
-Because many of my students are first-generation college students, working students, or students returning to education after time away, I design my courses to be both intellectually rigorous and structurally transparent. I use clear learning objectives, scaffolded assignments, and explicit grading rubrics so that expectations are visible rather than implicit. Low-stakes writing, structured discussion prompts, and iterative feedback allow students to practice philosophical skills—argument reconstruction, conceptual analysis, and critical evaluation—before being assessed at a higher level. This scaffolding is not remedial; it is a principled response to the fact that philosophical reasoning is a learned skill, not merely a natural aptitude.
-
-
-      </p>
-      <p>
-       
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Courses (selected)</h3>
-          <ul>
-            <li>Introduction to Philosophy</li>
-            <li>Introduction to Critical Thinking</li>
-            <li>Logic (including symbolic logic)</li>
-            <li>Philosophy of Criminal Law </li>
-            <li>Philosophy of Technology</li>
-            <li>AI, Ethics, and Robots</li>
-            <li>Great Thinkers: East &amp; West</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Sample syllabi (PDF)</h3>
-          <ul>
-            <li><a class="file" href="assets/syllabi/ethics.pdf">Introduction to Ethics</a></li>
-            <li><a class="file" href="assets/syllabi/logic.pdf">Logic</a></li>
-            <li><a class="file" href="assets/syllabi/critical-thinking.pdf">Critical Thinking</a></li>
-          </ul>
-          <p class="muted" style="margin-top:10px;">
-          </p>
-        </div>
+      <div class="card">
+        <h3>Unifying question</h3>
+        <p class="muted" style="margin:0;">
+          How should we reason—and teach others to reason—under conditions of disagreement, uncertainty, and institutional constraint?
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="cv">
-      <h2>CV</h2>
-      <p>
-        <a class="file" href="assets/cv.pdf">Download Curriculum Vitae (PDF)</a>
-      </p>
-      <p class="muted">
-        Upload your CV PDF to <code>assets/cv.pdf</code> (or rename the link to match your file).
-      </p>
-    </section>
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p>
+      I teach philosophy as a practice aimed at cultivating intellectual agency: the ability to reason carefully, articulate commitments clearly,
+      and revise one’s views in light of argument and evidence. My courses emphasize structured discussion, transparent expectations, and iterative
+      feedback on writing and argument.
+    </p>
 
-    <section id="links">
-      <h2>Links</h2>
-      <ul>
-        
-        <li><a class="file" href="https://philpeople.org/">PhilPeople</a></li>
-        <li><a class="file" href="https://scholar.google.com/">Google Scholar</a></li>
-      </ul>
-      <p class="muted" style="margin-top:10px;">
-        Add additional links here (department profile, ORCID, SSRN, writing samples, etc.).
-      </p>
-    </section>
-
-    <footer>
-      <div class="wrap" style="padding:0;">
-        © <span id="year"></span> Matthew Madruga. Hosted on GitHub Pages.
+    <div class="grid">
+      <div class="card">
+        <h3>Courses (selected)</h3>
+        <ul>
+          <li>Introduction to Ethics</li>
+          <li>Contemporary Moral Problems</li>
+          <li>Philosophy of Criminal Law</li>
+          <li>Logic (including symbolic logic)</li>
+          <li>Introduction to Critical Thinking</li>
+          <li>AI, Ethics, and Robots</li>
+          <li>Great Thinkers: East &amp; West</li>
+        </ul>
       </div>
-    </footer>
-  </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+      <div class="card">
+        <h3>Sample syllabi (PDF)</h3>
+        <ul>
+          <li><a href="assets/syllabi/ethics.pdf">Introduction to Ethics</a></li>
+          <li><a href="assets/syllabi/logic.pdf">Logic</a></li>
+          <li><a href="assets/syllabi/critical-thinking.pdf">Critical Thinking</a></li>
+        </ul>
+        <p class="muted" style="margin-top:10px;">
+          Upload PDFs to <code>assets/syllabi/</code> using the exact filenames above (or update these links).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv">
+    <h2>CV</h2>
+    <p><a href="assets/cv.pdf">Download Curriculum Vitae (PDF)</a></p>
+  </section>
+
+  <section id="links">
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://github.com/madrugam">GitHub</a></li>
+      <li><a href="https://philpeople.org/">PhilPeople</a></li>
+      <li><a href="https://scholar.google.com/">Google Scholar</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Matthew Madruga. Hosted on GitHub Pages.
+  </footer>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
